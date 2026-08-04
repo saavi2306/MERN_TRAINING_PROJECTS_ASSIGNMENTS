@@ -1,0 +1,49 @@
+.cardDiv{
+    height: 40vh;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    gap: 10px;
+    transition: transform 0.3 ease ,  box-shadow 0.3 ease;
+}
+.cardDiv:hover{
+    transform: translateY(-8px);
+    border:2px solid rgba(197, 67, 3, 0.15);
+}
+.secondCard{
+    color:white;
+    background-color: black;
+}
+.mainDiv{
+    padding:20px;
+}
+
+.imgdiv{
+    display:flex;
+    justify-content: left;
+    
+
+}
+.logoimg{
+    height: 30px;
+    width: 30px;
+   
+}
+.headingDiv{
+    display: flex;
+    justify-content: left;
+  
+}
+.h3{
+    font-weight: bolder;
+    text-align: justify;
+}
+.paraDiv{
+    display: flex;
+    justify-content: center;
+}
+.descSpan{
+    text-align:justify;
+    padding: 2%;
+}
+/* h-56 w-56 border-gray-500  bg-gray-200  */

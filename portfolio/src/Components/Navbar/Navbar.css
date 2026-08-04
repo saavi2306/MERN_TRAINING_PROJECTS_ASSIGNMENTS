@@ -1,0 +1,76 @@
+
+.fullNav {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    position: sticky;
+    top:0;
+    z-index: 100;
+    border: 1px solid rgb(199, 198, 198);
+}
+
+
+.logo{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+.link {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 40px;              
+    margin: 0;
+    padding: 0;
+}
+
+.link li {
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.link li:hover {
+    color: #4f46e5;
+}
+
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.toggle {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.moon {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+}
+
+
+.HireME {
+    height: 45px;
+    width: 120px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0;
+    background-color: orange;
+   
+}

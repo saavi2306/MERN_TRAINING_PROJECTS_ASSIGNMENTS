@@ -1,0 +1,27 @@
+.reviews{
+    width: 100%;
+    padding: 100px 7%;
+    background: #fafafa;
+}
+
+.reviews h4{
+    color: #ff6b2d;
+    letter-spacing: 4px;
+    font-size: 18px;
+    font-weight: 500;
+   
+}
+
+.reviews h1{
+    font-size: 78px;
+    color: #202020;
+    
+    font-weight: 700;
+}
+
+.reviewCards{
+    display: flex;
+    flex: wrap 0;
+    /* justify-content: space-between; */
+    /* gap: 10px; */
+}

@@ -1,0 +1,27 @@
+.serviceCard{
+    display: flex;
+    gap: 7px;
+    padding: 10px;
+   
+}
+.gud{
+ margin-top: 55vh;
+ background-color: rgb(237, 235, 233);
+ height: 80vh;
+ padding: 40px;
+}
+.para{
+    color: orange;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: small;
+
+}
+.head{
+   
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.card2{
+    color: white;
+    background-color: black;
+}

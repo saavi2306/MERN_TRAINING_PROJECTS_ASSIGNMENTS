@@ -1,0 +1,32 @@
+.card{
+    position: relative;
+    width: 450px;
+}
+
+.img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 25px;
+    display: block;
+}
+
+.imgText{
+    /* /* position: relative;
+    left: 20px;
+    bottom: 20px; */
+    width: fit-content; 
+   transform: translate3d(-30px,-30px,-30px);
+   /* transform: translateX(-35px); */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: orangered;
+    color: white;
+
+    padding: 12px 20px;
+    border-radius: 40px;
+/* 
+    z-index: 1000;    */
+}

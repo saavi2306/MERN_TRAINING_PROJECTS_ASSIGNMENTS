@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.work {
+    width: 100%;
+    padding: 80px 8%;
+    background-color: #fafafa;
+}
+
+
+
+.topDiv {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+
+
+.leftDiv {
+    width: 50%;
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.imgLeft {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+
+
+.rightDiv {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.div1,
+.div2 {
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.imgRight {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+
+
+.tagDiv {
+    display: flex;
+    gap: 12px;
+    margin: 30px 40px 0;
+}
+
+.tagDiv span {
+    padding: 8px 18px;
+    background: #efefef;
+    color: #666;
+    border-radius: 30px;
+    font-size: 15px;
+}
+
+.tagDiv span:first-child {
+    background: #fff5ef;
+    border: 1px solid #ff6b2d;
+    color: #ff6b2d;
+}
+
+
+
+.leftDiv h1,
+.div1 h1,
+.div2 h1 {
+    font-size: 40px;
+    color: #222;
+    margin: 25px 40px 20px;
+    font-weight: 700;
+}
+
+.div1 h1,
+.div2 h1 {
+    font-size: 32px;
+}
+
+.leftDiv p,
+.div1 p,
+.div2 p {
+    color: #666;
+    font-size: 18px;
+    line-height: 32px;
+    margin: 0 40px 25px;
+}
+
+.div1 p,
+.div2 p {
+    font-size: 17px;
+    line-height: 30px;
+}
+
+
+
+.leftDiv h4,
+.div1 h4,
+.div2 h4 {
+    margin: 20px 40px 40px;
+    font-size: 22px;
+    color: #111;
+    cursor: pointer;
+    font-weight: 500;
+}
