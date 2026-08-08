@@ -20,9 +20,10 @@ app.use("/product" , productRouter);
 
 
 // mongodb connection.
+const PORT = process.env.PORT || 5000;
 connectDB().then(()=>{
-    app.listen(process.env.PORT , ()=>{
-        console.log("server is running");
+    app.listen(PORT , ()=>{
+        console.log(`server is running on port ${PORT}`);
     })
 }).catch((err)=>{
     console.log(err);

@@ -20,4 +20,4 @@ password: {
 
 const userModel = mongoose.model("User" , userSchema); 
 
-module.export = userModel;
+module.exports = userModel;

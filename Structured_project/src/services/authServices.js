@@ -26,26 +26,36 @@ const register = async (userData)=>{
 const login = async (loginData)=>{
    const {email , password} = loginData;
    
-   const user = userModel.findOne({email});
+   const user = await userModel.findOne({email});
    if(!user){
-    throw new Error ("Invalid emaill or password");}
+    throw new Error ("Invalid email or password");
+   }
     // when the user with the email exists:
-    const comparePass = bcrypt.compare(password,user.password)
-        if(!comparePass){
-            throw new Error("Invalid Credentials");
-            }
-        const token = jwt.sign(
-            {
-                id: user._id,
-            },
-            process.env.JWT_SECRET,
-            {
-                expiresIn: "1h",
-            }
-        );
+    const comparePass = await bcrypt.compare(password,user.password)
+    if(!comparePass){
+        throw new Error("Invalid Credentials");
+    }
 
-        return{user , token};
-        
+    if (!process.env.JWT_SECRET) {
+        throw new Error("JWT_SECRET environment variable is required");
+    }
+
+    const token = jwt.sign(
+        {
+            id: user._id,
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn: "1h",
         }
+    );
+
+    return { user , token };
+}
+
+module.exports = {
+    register,
+    login,
+};
 
 

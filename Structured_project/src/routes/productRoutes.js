@@ -16,18 +16,18 @@ router.get("/getAll" ,
 );
 
 // get product by id:
- router.get("/getId:id" ,
+ router.get("/getId/:id" ,
     productController.getProductById
  );
 
 //  update product:
-router.post("/update:id" , 
+router.post("/update/:id" , 
     validationMiddleware(updateProductSchema),
     productController.updateProduct
 );
 
 // delete product:
-router.post("/delete:id" , 
+router.post("/delete/:id" , 
     productController.deleteProduct
 )
 

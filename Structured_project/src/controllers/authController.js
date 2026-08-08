@@ -8,7 +8,7 @@ const register = async (req ,res)=>{
             message:"User registered successfully"
         })
     }
-    catch{
+    catch(error){
         res.status(500).json({
             success:false ,
             message: error.message
@@ -22,6 +22,7 @@ const login = async (req ,res)=>{
 
         res.cookie("token" , result.token , {
             httpOnly:true,
+            csrf:true ,
             maxAge: 60* 60 * 1000 //expires in 1 hour 
         })
 
@@ -30,7 +31,7 @@ const login = async (req ,res)=>{
             message:"User logged in successfully"
         })
     }
-    catch{
+    catch(error){
         res.status(500).json({
             success:false ,
             message: error.message
@@ -55,5 +56,5 @@ const logout = async (req, res) => {
 };
 
 module.exports = {
-    resiter , login , logout
+    register , login , logout
 }

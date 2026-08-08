@@ -1,4 +1,4 @@
-const mongoose = required("mongoose");
+const mongoose = require("mongoose");
 const dns = require("dns");
 
 dns.setServers([
@@ -8,11 +8,15 @@ dns.setServers([
 
 const connectDB = async () =>{
     try{
+        if (!process.env.MONGO_URL) {
+            throw new Error("MONGO_URL environment variable is required");
+        }
         await mongoose.connect(process.env.MONGO_URL);
         console.log("dataBase connected");
     }
     catch(err){
         console.log(err)
+        throw err;
     }
 };
 
