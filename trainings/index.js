@@ -138,21 +138,45 @@ app.post("/createProduct" , async (req, res)=>{
 // getAllProducts:
 app.get("/getAllProduct" , async (req , res)=>{
     try{
-        const product = await productModel.find();
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.page) || 5;
+
+        const skip = (page -1 ) * limit;
+
+        const product = await productModel.find().skip(skip).limit(limit).sort({price:-1});
 
         res.status(200).json({
-            success: true,
-            products : product 
+            product 
         })
     }
     catch(err){
         res.status(404).json({
-            success: false , 
-            message:error.message
+            error: error.message
         })
     }
 })
 
+// GetProductById :
+app.get("/singleProduct/:id" , async(req , res)=>{
+    try{
+        const id = req.params.id;
+
+        const product = await productModel.findById(id);
+
+        res.status(200).json({
+            success: true , 
+            product  
+        });
+    }
+    catch(err){
+        res.status(500).json({
+        success: false , 
+        message: error.message
+        });
+    }
+})
+
+// get
 
 connectDB().then(()=>{
     app.listen(process.env.PORT, () => {

@@ -1,6 +1,6 @@
 const Product = require("../models/productModel");
 
-const createProduct = async (productData) => {
+const createProduct = async (productData, ownerId) => {
     const { sku } = productData;
 
     const existingProduct = await Product.findOne({ sku });
@@ -9,7 +9,10 @@ const createProduct = async (productData) => {
         throw new Error("SKU already exists");
     }
 
-    const product = await Product.create(productData);
+    const product = await Product.create({
+        ...productData,
+        owner: ownerId,
+    });
 
     return product;
 };
@@ -39,7 +42,13 @@ const getProductById = async (id) => {
     return product;
 };
 
-const updateProduct = async (id, productData) => {
+const updateProduct = async (id, productData, user) => {
+    const product = await Product.findById(id);
+
+    if (!product) {
+        throw new Error("Product not found");
+    }
+
     if (productData.sku) {
         const existingProduct = await Product.findOne({
             sku: productData.sku,
@@ -53,29 +62,28 @@ const updateProduct = async (id, productData) => {
         }
     }
 
-    const updatedProduct = await Product.findByIdAndUpdate(
-        id,
-        productData,
-        {
-            new: true,
-            runValidators: true,
-        }
-    );
-
-    if (!updatedProduct) {
-        throw new Error("Product not found");
+    if (user.role !== "admin" && product.owner.toString() !== user.id) {
+        throw new Error("You are not authorized to update this product");
     }
+
+    Object.assign(product, productData);
+    const updatedProduct = await product.save();
 
     return updatedProduct;
 };
 
-const deleteProduct = async (id) => {
-    const deletedProduct = await Product.findByIdAndDelete(id);
+const deleteProduct = async (id, user) => {
+    const product = await Product.findById(id);
 
-    if (!deletedProduct) {
+    if (!product) {
         throw new Error("Product not found");
     }
 
+    if (user.role !== "admin" && product.owner.toString() !== user.id) {
+        throw new Error("You are not authorized to delete this product");
+    }
+
+    const deletedProduct = await product.deleteOne();
     return deletedProduct;
 };
 

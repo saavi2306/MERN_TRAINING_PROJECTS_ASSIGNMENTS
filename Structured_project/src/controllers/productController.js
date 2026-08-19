@@ -1,18 +1,17 @@
 const productService = require("../services/productService");
 
 const createProduct = async (req, res) => {
-    try{
-        const product = await productService.createProduct(req.body);
+    try {
+        const product = await productService.createProduct(req.body, req.user.id);
         res.status(201).json({
-            success:true,
-            message:"Product created successfully",
+            success: true,
+            message: "Product created successfully",
             data: product,
-        })
-    }
-    catch(error){
+        });
+    } catch (error) {
         res.status(500).json({
-            success:false,
-            message:error.message,
+            success: false,
+            message: error.message,
         });
     }
 }
@@ -56,7 +55,8 @@ const updateProduct = async (req, res) => {
     try {
         const updatedProduct = await productService.updateProduct(
             req.params.id,
-            req.body
+            req.body,
+            req.user
         );
 
         res.status(200).json({
@@ -65,7 +65,7 @@ const updateProduct = async (req, res) => {
             data: updatedProduct,
         });
     } catch (error) {
-        res.status(404).json({
+        res.status(403).json({
             success: false,
             message: error.message,
         });
@@ -75,14 +75,14 @@ const updateProduct = async (req, res) => {
 // delete product
 const deleteProduct = async (req, res) => {
     try {
-        await productService.deleteProduct(req.params.id);
+        await productService.deleteProduct(req.params.id, req.user);
 
         res.status(200).json({
             success: true,
             message: "Product deleted successfully",
         });
     } catch (error) {
-        res.status(404).json({
+        res.status(403).json({
             success: false,
             message: error.message,
         });
